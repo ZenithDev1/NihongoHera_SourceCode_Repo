@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: nihongo-hera-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/nihongohera
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+app:
+  jwt:
+    # 256-bit Base64 encoded secret key
+    secret: ${JWT_SECRET:NihongoHeraDiamondSecretKeyForJwtSigning2026IndianJlptAspirants998877665544332211==}
+    expiration-ms: 604800000 # 7 days
+  cors:
+    allowed-origins: "http://localhost:5173,http://localhost:3000"
